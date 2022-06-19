@@ -10,6 +10,7 @@ spring:
     time-zone: GMT+8
   data:
     redis:
+      timeout: 5000
       repositories:
         enabled: false
 #  pid:

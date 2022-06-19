@@ -19,7 +19,7 @@
         </dependency>
     </dependencies>
 
-    <artifactId>autoplan</artifactId>
+    <artifactId>eladmin-autoplan</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
