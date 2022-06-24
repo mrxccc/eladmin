@@ -16,6 +16,7 @@
         <module>eladmin-tools</module>
         <module>eladmin-generator</module>
         <module>eladmin-autoplan</module>
+        <module>hair</module>
     </modules>
 
     <name>EL-ADMIN 后台管理</name>
