@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package me.zhengjie.service.dfo;
+package me.zhengjie.service.dto;
 
 import lombok.Data;
 import me.zhengjie.annotation.Query;
@@ -25,6 +25,6 @@ import me.zhengjie.annotation.Query;
 @Data
 public class MtUserQueryCriteria {
 
-    @Query(blurry = "name")
+    @Query(blurry = "name,mobile")
     private String blurry;
 }

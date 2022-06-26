@@ -1,6 +1,7 @@
 package me.zhengjie.repository;
 
-import me.zhengjie.domain.hair.MtConsumeItem;
+
+import me.zhengjie.domain.MtConsumeItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

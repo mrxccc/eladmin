@@ -8,11 +8,7 @@ spring:
     active: dev
   jackson:
     time-zone: GMT+8
-  data:
-    redis:
-      timeout: 5000
-      repositories:
-        enabled: false
+
 #  pid:
 #    file: /自行指定位置/eladmin.pid
 
@@ -33,6 +29,12 @@ spring:
     password: ${REDIS_PWD:}
     #连接超时时间
     timeout: 5000
+    jedis:
+      pool:
+        max-active: 300
+        max-idle: 100
+        min-idle: 0
+        max-wait: -1ms
 
 task:
   pool:

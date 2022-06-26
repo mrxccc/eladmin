@@ -1,6 +1,6 @@
 package me.zhengjie.repository;
 
-import me.zhengjie.domain.hair.MtUser;
+import me.zhengjie.domain.MtUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.lang.NonNull;

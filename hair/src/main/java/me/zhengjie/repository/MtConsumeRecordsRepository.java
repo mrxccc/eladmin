@@ -1,7 +1,7 @@
 package me.zhengjie.repository;
 
-import me.zhengjie.domain.hair.MtConsumeRecords;
-import me.zhengjie.domain.hair.MtUser;
+
+import me.zhengjie.domain.MtConsumeRecords;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

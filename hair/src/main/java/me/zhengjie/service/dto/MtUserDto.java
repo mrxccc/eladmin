@@ -1,4 +1,4 @@
-package me.zhengjie.service.dfo;
+package me.zhengjie.service.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

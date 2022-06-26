@@ -1,12 +1,13 @@
-package me.zhengjie.service.dfo;
+package me.zhengjie.service.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
-import me.zhengjie.domain.hair.MtConsumeItem;
-import me.zhengjie.domain.hair.MtUser;
+import me.zhengjie.domain.MtConsumeItem;
+import me.zhengjie.domain.MtUser;
 
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,7 +24,7 @@ public class MtConsumeRecordsDto extends BaseDTO implements Serializable {
      * 消费记录ID
      */
     @ApiModelProperty("消费记录ID")
-    private Integer id;
+    private Long id;
 
     /**
      * 关联会员
@@ -38,10 +39,16 @@ public class MtConsumeRecordsDto extends BaseDTO implements Serializable {
     private List<MtConsumeItem> consumeItem;
 
     /**
-     * 消费总金额
+     * 实收
      */
-    @ApiModelProperty("消费总金额")
-    private BigDecimal amount;
+    @ApiModelProperty("实收")
+    private BigDecimal actualAmount;
+
+    /**
+     * 应收
+     */
+    @ApiModelProperty("应收")
+    private BigDecimal receivable;
 
     /**
      * 折扣

@@ -16,10 +16,8 @@
 package me.zhengjie.service.mapstruct;
 
 import me.zhengjie.base.BaseMapper;
-import me.zhengjie.domain.hair.MtConsumeItem;
-import me.zhengjie.domain.hair.MtUser;
-import me.zhengjie.service.dfo.MtConsumeItemDto;
-import me.zhengjie.service.dfo.MtUserDto;
+import me.zhengjie.domain.MtConsumeItem;
+import me.zhengjie.service.dto.MtConsumeItemDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

@@ -1,15 +1,12 @@
 package me.zhengjie;
 
-import me.zhengjie.domain.hair.MtUser;
+import me.zhengjie.domain.MtUser;
 import me.zhengjie.repository.MtUserRepository;
 import me.zhengjie.service.MtUserService;
-import me.zhengjie.service.dfo.MtUserDto;
-import me.zhengjie.service.dfo.MtUserQueryCriteria;
+import me.zhengjie.service.dto.MtUserDto;
+import me.zhengjie.service.dto.MtUserQueryCriteria;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;

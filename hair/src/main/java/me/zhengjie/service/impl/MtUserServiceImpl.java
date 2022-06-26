@@ -16,14 +16,13 @@
 package me.zhengjie.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import me.zhengjie.domain.hair.MtUser;
+import me.zhengjie.domain.MtUser;
 import me.zhengjie.repository.MtUserRepository;
 import me.zhengjie.service.MtUserService;
-import me.zhengjie.service.dfo.MtUserDto;
-import me.zhengjie.service.dfo.MtUserQueryCriteria;
+import me.zhengjie.service.dto.MtUserDto;
+import me.zhengjie.service.dto.MtUserQueryCriteria;
 import me.zhengjie.service.mapstruct.MtUserMapper;
 import me.zhengjie.utils.*;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -67,16 +66,13 @@ public class MtUserServiceImpl implements MtUserService {
     public void update(MtUser resources) {
         MtUser mtUser = mtUserRepository.findById(resources.getId()).orElseGet(MtUser::new);
         ValidationUtil.isNull( mtUser.getId(),"MtUser","id",resources.getId());
-        mtUser.setName(resources.getName());
-        mtUser.setRemark(resources.getRemark());
+        mtUser.copy(resources);
         mtUserRepository.save(mtUser);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void delete(Set<Long> ids) {
-        // 清理缓存
-        List<MtUser> mtUsers = mtUserRepository.findByIdIn(ids);
         mtUserRepository.deleteByIdIn(ids);
     }
 
