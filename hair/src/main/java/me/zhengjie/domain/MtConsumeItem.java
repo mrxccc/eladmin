@@ -1,8 +1,7 @@
-package me.zhengjie.domain.hair;
+package me.zhengjie.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import me.zhengjie.base.BaseEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,8 +15,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "mt_consume_item")
-@Getter
-@Setter
+@Data
 @EntityListeners(AuditingEntityListener.class)
 public class MtConsumeItem extends BaseEntity {
     /**
@@ -26,7 +24,7 @@ public class MtConsumeItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mt_consume_item", nullable = false, length = 10)
-    private Integer id;
+    private Long id;
 
     /**
      * 关联消费记录
@@ -37,16 +35,22 @@ public class MtConsumeItem extends BaseEntity {
     private MtConsumeRecords record;
 
     /**
-     * 消费类型
+     * 消费类别
      */
     @Column(name = "consume_type", length = 100)
     private String consumeType;
 
     /**
-     * 消费金额
+     * 实收
      */
-    @Column(name = "amount", length = 10)
-    private BigDecimal amount;
+    @Column(name = "actual_amount", length = 10, scale = 2)
+    private BigDecimal actualAmount;
+
+    /**
+     * 应收
+     */
+    @Column(name = "receivable", length = 10, scale = 2)
+    private BigDecimal receivable;
 
     /**
      * 备注

@@ -1,10 +1,10 @@
-package me.zhengjie.service.dfo;
+package me.zhengjie.service.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
-import me.zhengjie.domain.hair.MtConsumeRecords;
+import me.zhengjie.domain.MtConsumeRecords;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -36,10 +36,16 @@ public class MtConsumeItemDto extends BaseDTO implements Serializable {
     private String consumeType;
 
     /**
-     * 消费金额
+     * 实收
      */
-    @ApiModelProperty("消费金额")
-    private BigDecimal amount;
+    @ApiModelProperty("实收")
+    private BigDecimal actualAmount;
+
+    /**
+     * 应收
+     */
+    @ApiModelProperty("应收")
+    private BigDecimal receivable;
 
     /**
      * 备注

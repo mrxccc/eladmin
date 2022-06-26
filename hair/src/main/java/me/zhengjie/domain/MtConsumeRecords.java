@@ -1,8 +1,9 @@
-package me.zhengjie.domain.hair;
+package me.zhengjie.domain;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import me.zhengjie.base.BaseEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -17,8 +18,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "mt_consume_records")
-@Getter
-@Setter
+@Data
 @EntityListeners(AuditingEntityListener.class)
 public class MtConsumeRecords extends BaseEntity{
     /**
@@ -27,7 +27,7 @@ public class MtConsumeRecords extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, length = 10)
-    private Integer id;
+    private Long id;
 
     /**
      * 关联会员
@@ -44,10 +44,16 @@ public class MtConsumeRecords extends BaseEntity{
     private List<MtConsumeItem> consumeItem;
 
     /**
-     * 消费总金额
+     * 实收
      */
-    @Column(name = "amount", length = 10)
-    private BigDecimal amount;
+    @Column(name = "actual_amount", length = 10, scale = 2)
+    private BigDecimal actualAmount;
+
+    /**
+     * 应收
+     */
+    @Column(name = "receivable", length = 10, scale = 2)
+    private BigDecimal receivable;
 
     /**
      * 折扣
@@ -61,4 +67,8 @@ public class MtConsumeRecords extends BaseEntity{
      */
     @Column(name = "remark", length = 100)
     private String remark;
+
+    public void copy(MtConsumeRecords source){
+        BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
+    }
 }

@@ -1,16 +1,13 @@
-package me.zhengjie.domain.hair;
+package me.zhengjie.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
+import lombok.Data;
 import me.zhengjie.base.BaseEntity;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,8 +15,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "mt_user")
-@Getter
-@Setter
+@Data
 @EntityListeners(AuditingEntityListener.class)
 public class MtUser extends BaseEntity{
     /**
@@ -93,7 +89,7 @@ public class MtUser extends BaseEntity{
     /**
      * 余额
      */
-    @Column(name = "balance", length = 10)
+    @Column(name = "balance", length = 10, scale = 2)
     private BigDecimal balance;
 
     /**
@@ -131,5 +127,9 @@ public class MtUser extends BaseEntity{
      */
     @Column(name = "remark", length = 255)
     private String remark;
+
+    public void copy(MtUser source){
+        BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
+    }
 }
 
