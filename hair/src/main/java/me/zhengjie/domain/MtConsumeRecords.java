@@ -3,7 +3,8 @@ package me.zhengjie.domain;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import me.zhengjie.base.BaseEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -18,8 +19,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "mt_consume_records")
-@Data
 @EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
 public class MtConsumeRecords extends BaseEntity{
     /**
      * 消费记录ID
@@ -33,8 +35,7 @@ public class MtConsumeRecords extends BaseEntity{
      * 关联会员
      */
     @JoinColumn(name = "mt_user_id")
-    @ManyToOne(fetch=FetchType.LAZY)
-    @ApiModelProperty(value = "会员", hidden = true)
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional = false)
     private MtUser mtUser;
 
     /**

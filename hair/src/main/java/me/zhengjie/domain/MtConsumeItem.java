@@ -1,7 +1,8 @@
 package me.zhengjie.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import me.zhengjie.base.BaseEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,8 +16,9 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "mt_consume_item")
-@Data
 @EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
 public class MtConsumeItem extends BaseEntity {
     /**
      * 消费记录明细ID

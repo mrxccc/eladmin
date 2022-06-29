@@ -29,21 +29,9 @@ public class MtConsumeRecordsQueryCriteria{
 
     /** 精确 */
     @Query
-    private Integer id;
-
-    /** 精确 */
-    @Query
-    private BigDecimal amount;
-
-    /** 精确 */
-    @Query
-    private BigDecimal discount;
+    private Long id;
 
     /** 模糊 */
     @Query(type = Query.Type.INNER_LIKE)
     private String remark;
-
-    /** 精确 */
-    @Query
-    private Long mtUserId;
 }

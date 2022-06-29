@@ -25,6 +25,10 @@ import me.zhengjie.annotation.Query;
 @Data
 public class MtUserQueryCriteria {
 
+    /** 精确 */
+    @Query
+    private Long id;
+
     @Query(blurry = "name,mobile")
     private String blurry;
 }
