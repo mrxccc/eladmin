@@ -24,6 +24,7 @@ import me.zhengjie.service.MtConsumeRecordsService;
 import me.zhengjie.service.dto.MtConsumeRecordsDto;
 import me.zhengjie.service.dto.MtConsumeRecordsQueryCriteria;
 import me.zhengjie.service.mapstruct.MtConsumeRecordsMapper;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;
@@ -52,7 +53,14 @@ public class MtConsumeRecordsServiceImpl implements MtConsumeRecordsService {
 
     @Override
     public Map<String,Object> queryAll(MtConsumeRecordsQueryCriteria criteria, Pageable pageable){
-        Page<MtConsumeRecords> page = mtConsumeRecordsRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
+        Page<MtConsumeRecords> page = null;
+        if (criteria.getMtUserId() != null){
+            List<MtConsumeRecords> list = mtConsumeRecordsRepository.findByMtUser_IdEquals(criteria.getMtUserId(), pageable);
+            page = new PageImpl(list, pageable, list.size());
+        } else {
+            page = mtConsumeRecordsRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
+        }
+
         return PageUtil.toPage(page.map(mtConsumeRecordsMapper::toDto));
     }
 

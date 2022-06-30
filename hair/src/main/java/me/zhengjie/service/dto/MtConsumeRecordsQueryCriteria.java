@@ -18,6 +18,7 @@ package me.zhengjie.service.dto;
 import lombok.Data;
 import java.math.BigDecimal;
 import me.zhengjie.annotation.Query;
+import me.zhengjie.domain.MtUser;
 
 /**
 * @website https://el-admin.vip
@@ -30,6 +31,10 @@ public class MtConsumeRecordsQueryCriteria{
     /** 精确 */
     @Query
     private Long id;
+
+    /** 精确 */
+    @Query
+    private Long mtUserId;
 
     /** 模糊 */
     @Query(type = Query.Type.INNER_LIKE)
